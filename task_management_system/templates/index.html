@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Management System</h1>
+        <form id="task-form" method="post" action="/add">
+            <input type="text" id="task-input" name="task" placeholder="Enter a task" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list">
+            {% for task in tasks %}
+                <li data-id="{{ task[0] }}">{{ task[1] }} <button class="delete-btn">Delete</button></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
